@@ -24,7 +24,7 @@ const Signup = ({ handleAuthentication }) => {
       .then((response) => {
         console.log("Signup successful:", response.data);
         handleAuthentication();
-        history("/"); // Redirect to home page after successful signup
+        history("/signin"); // Redirect to home page after successful signup
       })
       .catch((error) => {
         console.error("Error signing up:", error);

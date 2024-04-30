@@ -24,7 +24,7 @@ const Signin = ({ handleAuthentication }) => {
       .then((response) => {
         console.log("Signin successful:", response.data);
         handleAuthentication();
-        history("/"); // Redirect to home page after successful signin
+        history("/home"); // Redirect to home page after successful signin
       })
       .catch((error) => {
         console.error("Error signing in:", error);
