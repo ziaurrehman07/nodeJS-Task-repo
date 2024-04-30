@@ -20,7 +20,7 @@ function App() {
       {/* Public routes */}
 
       <Route
-        path="/signup"
+        path="/"
         element={<Signup handleAuthentication={handleAuthentication} />}
       />
       <Route
@@ -31,7 +31,7 @@ function App() {
       {/* Private routes, accessible only after authentication */}
       {authenticated ? (
         <>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/student" element={<StudentList />} />
           <Route path="/interview" element={<InterviewList />} />
           <Route path="/createtudent" element={<StudentRegister />} />
