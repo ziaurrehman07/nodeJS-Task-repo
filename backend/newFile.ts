@@ -1,0 +1,6 @@
+const newFile = () => {
+    return (
+        <>
+        </>
+    )
+}
