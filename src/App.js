@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import InterviewList from "./components/InterviewList";
+import RegisterInterview from "./components/RegisterInterview";
+import StudentList from "./components/StudentList";
+import StudentRegister from "./components/StudentRegister";
+import Home from "./pages/Home";
+import Signup from "./components/Signup";
+import Signin from "./components/Signin";
 
 function App() {
+  const [authenticated, setAuthenticated] = useState(false);
+
+  const handleAuthentication = () => {
+    setAuthenticated(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      {/* Public routes */}
+
+      <Route
+        path="/signup"
+        element={<Signup handleAuthentication={handleAuthentication} />}
+      />
+      <Route
+        path="/signin"
+        element={<Signin handleAuthentication={handleAuthentication} />}
+      />
+
+      {/* Private routes, accessible only after authentication */}
+      {authenticated ? (
+        <>
+          <Route path="/" element={<Home />} />
+          <Route path="/student" element={<StudentList />} />
+          <Route path="/interview" element={<InterviewList />} />
+          <Route path="/createtudent" element={<StudentRegister />} />
+          <Route path="/createinterview" element={<RegisterInterview />} />
+        </>
+      ) : null}
+    </Routes>
   );
 }
 
